@@ -1,8 +1,13 @@
 from math import floor
 import numpy as np
+from randomtimestamp import randomtimestamp 
+import pandas as pd
+import csv
 
+# randomtimestamp(2021).split()[1]
 # numbers = []
 # approx_num = []
+time = []
 numbers_integer = []
 rangeHolder = []
 sum1 = 0
@@ -66,9 +71,46 @@ for i in range (0, len(numbers_integer)):
 
     details.append(wings)
 
-print(f"\n\n[wings, number of cars] is \n\n {details}")
 
+print(f"\n\n[wings, number of cars] is \n\n {details}")
+print(f"humara range hai : {details[1][1]}")
+print(time)
     
+#random time generator
+# for i in range (0, 3):
+#     temp = randomtimestamp(2021).split()[1]
+#     time.append(temp)
+
+# details[0].append(time for i in range (0, details[i][1]))
+print(f"length hai {len(details)}")
+
+for i in range (0, len(details)):
+    time = []
+    for j in range (0, int(details[i][1])):    
+        temp = randomtimestamp(2021).split()[1]
+        time.append(temp)
+    details[i].extend(time)
+
+print(f"\n\n time k saath wala : {details}")
+
+# export to csv file
+fields = ['wings', 'cars', 'time']
+rows = details
+
+with open('GFG.csv', 'w') as f: 
+      
+    # using csv.writer method from CSV package 
+    write = csv.writer(f) 
+      
+    write.writerow(fields) 
+    write.writerows(rows) 
+
+
+
+
+
+
+
 # [
 #     "1:[12]:[TIME]:BASEMENT",
 #     "2:[22]:[TIME]:BASEMENT",
