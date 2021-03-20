@@ -1,4 +1,5 @@
 from math import floor
+from random import shuffle
 import numpy as np
 from randomtimestamp import randomtimestamp 
 import pandas as pd
@@ -13,9 +14,9 @@ rangeHolder = []
 sum1 = 0
 
 #inputs
-max_range = 50
+max_range = 40
 wing = 20
-total_customers = 500
+total_customers = 40
 
 def more_than_range(numbers):
     for i in range (0, len(numbers)):
@@ -29,6 +30,7 @@ def more_than_range(numbers):
     else:
         return numbers
     for i in range (0, len(rangeHolder)):
+        
         numbers[i] = average_rangeHolder + numbers[i]
     # numbers.sort()
 
@@ -38,30 +40,32 @@ def more_than_range(numbers):
         else:
             return numbers
 
+    # return numbers 
+#GETTING FLOAT VALUES AND COVERTING TO INT VALUES LESS THAN TOTAL_NO_CUSTOMERS
 def generateRandomNumbers():
 
     # numbers.append(np.random.dirichlet(np.ones(10)) * 100)
     temp = np.random.dirichlet(np.ones(wing) ) * total_customers
     numbers = np.floor(temp).astype(int)
-    # print(type(numbers))
+    print("numbers are", numbers)
+    print("temp here is",temp)
+
 
 # np nd.array convert python int
     for i in numbers: 
         temp1 = np.int16(i).item()
         numbers_integer.append(temp1)
-
+    print("NUMBER INTEGER 1",numbers_integer)
 # print(numbers_integer)
     sum1 = sum(numbers_integer)
     less_than_100 = total_customers - sum1
     numbers_integer[0] += less_than_100
 # sum1 = sum(numbers_integer)
-    numbers_integer.sort()
+    print("NUMBER INTEGER 2", numbers_integer)
+    # numbers_integer.sort()
+    print("NUMBER INTEGER 3", numbers_integer)
     more_than_range(numbers_integer)
-    # return numbers 
-
-
-
-# MY CODE STARTS FROM HERE 
+    print("NUMBER INTEGER 4", numbers_integer)
 
 generateRandomNumbers()
 print(numbers_integer)
@@ -69,7 +73,9 @@ details = []
 for i in range (0, len(numbers_integer)):
     wings = []
     wings.append(i+1)
+    print(f"wings here is {wings}")
     wings.append(numbers_integer[i])
+    print(f"wings here is 2 {wings}")
 
     details.append(wings)
 
@@ -84,7 +90,7 @@ print(time)
 #     time.append(temp)
 
 # details[0].append(time for i in range (0, details[i][1]))
-# print(f"length is {len(details)}")
+print(f"length is {len(details)}")
 
 for i in range (0, len(details)):
     time = []
@@ -93,13 +99,11 @@ for i in range (0, len(details)):
         time.append(temp)
     details[i].extend(time)
 
-print(f"\n\n time k saath wala : {details}")
 
-# export to csv file
 fields = ['wings', 'cars', 'time']
 rows = details
-
-with open('GFG.csv', 'w') as f: 
+ 
+with open(f'GFGNOT.csv', 'w') as f: 
       
     # using csv.writer method from CSV package 
     write = csv.writer(f) 
@@ -109,6 +113,24 @@ with open('GFG.csv', 'w') as f:
 
 
 
+
+print(f"\n\n with time : {details}")
+
+# export to csv file
+fields = ['wings', 'cars', 'time']
+shuffle(details)
+rows= details
+
+with open(f'GFGSHUFFLED.csv', 'w') as f: 
+      
+    # using csv.writer method from CSV package 
+    write = csv.writer(f) 
+      
+    write.writerow(fields) 
+    write.writerows(rows)
+
+ 
+ 
 
 
 
