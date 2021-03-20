@@ -19,7 +19,7 @@ total_customers = 500
 
 def more_than_range(numbers):
     for i in range (0, len(numbers)):
-        numbers.sort()
+        # numbers.sort()
         if(numbers[i] > max_range):
             rangeHolder.append(numbers[i]-max_range)
             numbers[i] = max_range
@@ -30,7 +30,7 @@ def more_than_range(numbers):
         return numbers
     for i in range (0, len(rangeHolder)):
         numbers[i] = average_rangeHolder + numbers[i]
-    numbers.sort()
+    # numbers.sort()
 
     for i in range (0, len(numbers)):
         if (numbers[i] > max_range):
@@ -38,15 +38,12 @@ def more_than_range(numbers):
         else:
             return numbers
 
-    # return numbers 
-
 def generateRandomNumbers():
 
     # numbers.append(np.random.dirichlet(np.ones(10)) * 100)
     temp = np.random.dirichlet(np.ones(wing) ) * total_customers
     numbers = np.floor(temp).astype(int)
-    print(type(numbers))
-
+    # print(type(numbers))
 
 # np nd.array convert python int
     for i in numbers: 
@@ -60,6 +57,11 @@ def generateRandomNumbers():
 # sum1 = sum(numbers_integer)
     numbers_integer.sort()
     more_than_range(numbers_integer)
+    # return numbers 
+
+
+
+# MY CODE STARTS FROM HERE 
 
 generateRandomNumbers()
 print(numbers_integer)
@@ -73,7 +75,7 @@ for i in range (0, len(numbers_integer)):
 
 
 print(f"\n\n[wings, number of cars] is \n\n {details}")
-print(f"humara range hai : {details[1][1]}")
+# print(f"Range is : {details[1][1]}")
 print(time)
     
 #random time generator
@@ -82,7 +84,7 @@ print(time)
 #     time.append(temp)
 
 # details[0].append(time for i in range (0, details[i][1]))
-print(f"length hai {len(details)}")
+# print(f"length is {len(details)}")
 
 for i in range (0, len(details)):
     time = []
