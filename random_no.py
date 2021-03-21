@@ -16,7 +16,7 @@ sum1 = 0
 #inputs
 max_range = 40
 wing = 20
-total_customers = 40
+total_customers = 500
 
 def more_than_range(numbers):
     for i in range (0, len(numbers)):
@@ -30,8 +30,8 @@ def more_than_range(numbers):
     else:
         return numbers
     for i in range (0, len(rangeHolder)):
-        
-        numbers[i] = average_rangeHolder + numbers[i]
+        if(numbers[i]== min(numbers)):
+         numbers[i] = average_rangeHolder + numbers[i]
     # numbers.sort()
 
     for i in range (0, len(numbers)):
